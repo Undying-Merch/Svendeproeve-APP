@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gallery_App.Pages.Login"
+             Title="Login">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".33*"/>
+            <ColumnDefinition Width=".33*"/>
+            <ColumnDefinition Width=".33*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Text="User:" 
+               Grid.Row="0" Grid.Column="0"
+               VerticalTextAlignment="Start"
+               HorizontalTextAlignment="Center"
+               Padding="20"/>
+        <Entry x:Name="userEntry"
+               Grid.Row="0" Grid.Column="1"
+               VerticalOptions="Start"/>
+
+        <Label Text="Password:"
+               Grid.Row="1" Grid.Column="0"
+               VerticalTextAlignment="Start"
+               HorizontalTextAlignment="Center"
+               Padding="20"/>
+        <Entry x:Name="passEntry" IsPassword="True"
+               Grid.Row="1" Grid.Column="1"
+               VerticalOptions="Start"/>
+        <Button Text="Show" x:Name="passBTN"
+                Grid.Row="1" Grid.Column="2"
+                VerticalOptions="Start"
+                TextColor="Black"
+                BackgroundColor="Transparent"
+                Padding="20"/>
+
+        <Label Grid.Row="2" Grid.Column="0"
+               Text="Remeber me?"
+               VerticalOptions="Start" HorizontalOptions="Center"
+               Padding="0,10,0,0"/>
+        <CheckBox Grid.Row="2" Grid.Column="1"
+                  x:Name="loginRemember"
+                VerticalOptions="Start" HorizontalOptions="Start"/>
+        <Button Text="Login"
+                Grid.Row="2" Grid.Column="2"
+                VerticalOptions="StartAndExpand"
+                TextColor="Black"
+                BackgroundColor="Green"
+                Clicked="gotoMain"/>
+
+    </Grid>
+</ContentPage>

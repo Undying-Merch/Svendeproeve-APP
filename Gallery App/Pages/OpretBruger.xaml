@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gallery_App.Pages.OpretBruger"
+             Title="OpretBruger">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="1"
+               Text="Opret Bruger:"
+               FontSize="Medium"
+               HorizontalOptions="Center"/>
+
+        <Label Grid.Row="1" Grid.Column="0"
+               Text="Navn:"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Padding="5, 12, 0 ,0"/>  
+        <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+               x:Name="opretNavn"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Placeholder="Lucifer Morningstar" PlaceholderColor="Grey"
+               IsTextPredictionEnabled="False"
+               />
+
+        <Label Grid.Row="2" Grid.Column="0"
+               Text="Brugernavn:"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Padding="5, 12, 0 ,0"/>
+        <Entry Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+               x:Name="opretBrugernavn"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Placeholder="sweetDevil" PlaceholderColor="Grey"
+               IsTextPredictionEnabled="False"
+               />
+
+        <Label Grid.Row="3" Grid.Column="0"
+               Text="Password:"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Padding="5, 12, 0 ,0"/>
+        <Entry Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+               x:Name="opretPassword"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Placeholder="SecretRoad666" PlaceholderColor="Grey"
+               IsTextPredictionEnabled="False"
+               />
+
+        <Label Grid.Row="4" Grid.Column="0"
+                Text="Password:"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Padding="5, 12, 0 ,0"/>
+        <Entry Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+               x:Name="opretPassword2"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Placeholder="SecretRoad666" PlaceholderColor="Grey"
+               IsTextPredictionEnabled="False"
+               />
+
+        <Label Grid.Row="5" Grid.Column="0"
+               Text="Email:"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Padding="5, 12, 0 ,0"/>
+        <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+               x:Name="opretMail"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Placeholder="luci666@heavens-dawn.uk" PlaceholderColor="Grey"
+               IsTextPredictionEnabled="False"
+       />
+
+        <Button Grid.Row="6" Grid.Column="1"
+                Text="Opret"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+
+
+    </Grid>
+</ContentPage>

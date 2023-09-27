@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gallery_App.Pages.MainMenu"
+             Title="MainMenu">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0"
+                Text="Upload Billede:"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="gotoUploadBillede"/>
+
+        <Button Grid.Column="1" Grid.Row="0"
+                Text="Gennemse Galleri"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                Text="Tilmeld dig 'Dagens Billede'!"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+    </Grid>
+</ContentPage>
