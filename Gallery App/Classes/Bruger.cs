@@ -15,6 +15,7 @@ namespace Gallery_App.Classes
         public string email { get; set; }
 
         public Bruger() { }
+        public Bruger (string brugernavn) { this.brugernavn = brugernavn; }
         public Bruger (string brugernavn, string password)
         {
             this.brugernavn = brugernavn;

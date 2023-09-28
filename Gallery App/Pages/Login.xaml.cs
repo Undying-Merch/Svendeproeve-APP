@@ -25,15 +25,15 @@ public partial class Login : ContentPage
 		{
 			bool isUser = false;
 			
-			Bruger bruger = new Bruger(brugerEntry.Text.ToString(), passEntry.Text.ToString());
+			Bruger bruger = new Bruger(brugerEntry.Text, passEntry.Text);
 			isUser = conn.passwordCheck(bruger);
 
 			if (isUser)
 			{
                 if (loginRemember.IsChecked == true)
                 {
-                    Preferences.Default.Set("user", brugerEntry.Text.ToString());
-                    Preferences.Default.Set("pass", passEntry.Text.ToString());
+                    Preferences.Default.Set("user", brugerEntry.Text);
+                    Preferences.Default.Set("pass", passEntry.Text);
                 }
                 else { Preferences.Default.Remove("user"); Preferences.Default.Remove("pass");
 					brugerEntry.Text = ""; passEntry.Text = "";

@@ -86,8 +86,7 @@
                HorizontalOptions="Start"
                VerticalOptions="Start"
                Placeholder="luci666@heavens-dawn.uk" PlaceholderColor="Grey"
-               IsTextPredictionEnabled="False"
-               Keyboard="Email"/>
+               IsTextPredictionEnabled="False"/>
 
         <Button Grid.Row="6" Grid.Column="1"
                 Text="Opret"

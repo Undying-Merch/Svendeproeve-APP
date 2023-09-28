@@ -27,5 +27,20 @@ namespace Gallery_App.Classes
             return boolResp;
         }
 
+        public bool exsistingUser(Bruger bruger)
+        {
+            var sJson = new StringContent(JsonSerializer.Serialize(bruger), Encoding.UTF8, "application/json");
+            var response = client.PostAsync(url + "BC/", sJson);
+            bool boolResp = Boolean.Parse(response.Result.Content.ReadAsStringAsync().Result);
+            return boolResp;
+        }
+
+        public bool createUser(Bruger bruger)
+        {
+            var sJson = new StringContent(JsonSerializer.Serialize(bruger), Encoding.UTF8, "application/json");
+            var response = client.PostAsync(url + "BrugerCreate/", sJson);
+            return response.Result.IsSuccessStatusCode;
+        }
+
     }
 }
