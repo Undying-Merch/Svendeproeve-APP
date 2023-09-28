@@ -20,6 +20,13 @@ namespace Gallery_App.Classes
             this.brugernavn = brugernavn;
             this.password = password;
         }
+        public Bruger(string navn, string brugernavn, string password, string email)
+        {
+            this.navn = navn;
+            this.brugernavn = brugernavn;
+            this.password = password;
+            this.email = email;
+        }
         public Bruger(int id, string navn, string brugernavn, string password, string email)
         {
             this.id = id;

@@ -87,12 +87,13 @@
                VerticalOptions="Start"
                Placeholder="luci666@heavens-dawn.uk" PlaceholderColor="Grey"
                IsTextPredictionEnabled="False"
-       />
+               Keyboard="Email"/>
 
         <Button Grid.Row="6" Grid.Column="1"
                 Text="Opret"
                 VerticalOptions="Center"
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Clicked="creteUser"/>
 
 
     </Grid>

@@ -35,7 +35,9 @@ public partial class Login : ContentPage
                     Preferences.Default.Set("user", brugerEntry.Text.ToString());
                     Preferences.Default.Set("pass", passEntry.Text.ToString());
                 }
-                else { Preferences.Default.Remove("user"); Preferences.Default.Remove("pass"); }
+                else { Preferences.Default.Remove("user"); Preferences.Default.Remove("pass");
+					brugerEntry.Text = ""; passEntry.Text = "";
+				}
 
                 Navigation.PushAsync(new MainMenu());
 			}
