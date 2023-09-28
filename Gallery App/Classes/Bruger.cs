@@ -6,7 +6,27 @@ using System.Threading.Tasks;
 
 namespace Gallery_App.Classes
 {
-    class Bruger
+    public class Bruger
     {
+        public int id {  get; set; }
+        public string navn { get; set; }
+        public string brugernavn { get; set; }
+        public string password { get; set; }
+        public string email { get; set; }
+
+        public Bruger() { }
+        public Bruger (string brugernavn, string password)
+        {
+            this.brugernavn = brugernavn;
+            this.password = password;
+        }
+        public Bruger(int id, string navn, string brugernavn, string password, string email)
+        {
+            this.id = id;
+            this.navn = navn;
+            this.brugernavn = brugernavn;
+            this.password = password;
+            this.email = email;
+        }
     }
 }

@@ -16,15 +16,17 @@
             <ColumnDefinition Width=".33*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Text="User:" 
+        <!--BrugerNavn-->
+        <Label Text="Brugernavn:" 
                Grid.Row="0" Grid.Column="0"
                VerticalTextAlignment="Start"
                HorizontalTextAlignment="Center"
                Padding="20"/>
-        <Entry x:Name="userEntry"
+        <Entry x:Name="brugerEntry"
                Grid.Row="0" Grid.Column="1"
                VerticalOptions="Start"/>
 
+        <!--Password-->
         <Label Text="Password:"
                Grid.Row="1" Grid.Column="0"
                VerticalTextAlignment="Start"
@@ -33,20 +35,23 @@
         <Entry x:Name="passEntry" IsPassword="True"
                Grid.Row="1" Grid.Column="1"
                VerticalOptions="Start"/>
-        <Button Text="Show" x:Name="passBTN"
+        <Button Text="Vis Kode" x:Name="passBTN"
                 Grid.Row="1" Grid.Column="2"
                 VerticalOptions="Start"
                 TextColor="Black"
                 BackgroundColor="Transparent"
-                Padding="20"/>
+                Padding="20"
+                Clicked="hiddenPass"/>
 
+        <!--Remember ME-->
         <Label Grid.Row="2" Grid.Column="0"
-               Text="Remeber me?"
+               Text="Husk Mig?"
                VerticalOptions="Start" HorizontalOptions="Center"
                Padding="0,10,0,0"/>
         <CheckBox Grid.Row="2" Grid.Column="1"
                   x:Name="loginRemember"
                 VerticalOptions="Start" HorizontalOptions="Start"/>
+        
         <Button Text="Login"
                 Grid.Row="2" Grid.Column="2"
                 VerticalOptions="StartAndExpand"

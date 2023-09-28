@@ -1,14 +1,63 @@
+using Gallery_App.Classes;
+
 namespace Gallery_App.Pages;
 
 public partial class Login : ContentPage
 {
+	APIConn conn = new APIConn();
+	private bool passHidden = true;
+
 	public Login()
 	{
 		InitializeComponent();
-	}
 
-	public void gotoMain(object sender, EventArgs e)
+        if (Preferences.Default.ContainsKey("user") == true) { loginRemember.IsChecked = true; brugerEntry.Text = Preferences.Default.Get("user", ""); passEntry.Text = Preferences.Default.Get("pass", ""); }
+
+    }
+
+    public void gotoMain(object sender, EventArgs e)
 	{
-		Navigation.PushAsync(new MainMenu());
+		if (brugerEntry.Text == null || passEntry.Text == null)
+		{
+			DisplayAlert("Manglende felt", "Et eller flere felter mangler at blive udfyldt", "OK");
+		}
+		else
+		{
+			bool isUser = false;
+			
+			Bruger bruger = new Bruger(brugerEntry.Text.ToString(), passEntry.Text.ToString());
+			isUser = conn.passwordCheck(bruger);
+
+			if (isUser)
+			{
+                if (loginRemember.IsChecked == true)
+                {
+                    Preferences.Default.Set("user", brugerEntry.Text.ToString());
+                    Preferences.Default.Set("pass", passEntry.Text.ToString());
+                }
+                else { Preferences.Default.Remove("user"); Preferences.Default.Remove("pass"); }
+
+                Navigation.PushAsync(new MainMenu());
+			}
+			else
+			{
+				DisplayAlert("Fejl", "Kunne ikke finde en bruger med dette Brugernavn og Password. Prøv igen.", "OK");
+			}
+		}
+	}
+	public void hiddenPass(object sender, EventArgs e)
+	{
+		if (passHidden)
+		{
+			passEntry.IsPassword = false;
+			passBTN.Text = "Skjul Kode";
+			passHidden = false;
+		}
+		else 
+		{
+			passEntry.IsPassword = true;
+			passBTN.Text = "Vis Kode";
+			passHidden = true;
+		}
 	}
 }
