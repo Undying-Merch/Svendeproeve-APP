@@ -3,10 +3,12 @@ namespace Gallery_App.Pages;
 public partial class UploadBillede1 : ContentPage
 {
 	FileResult photo;
+	int userId = 0;
 
-	public UploadBillede1()
+	public UploadBillede1(int id)
 	{
 		InitializeComponent();
+		userId = id;
 	}
 
 	public bool photoCheck()
@@ -28,7 +30,7 @@ public partial class UploadBillede1 : ContentPage
 		bool check = photoCheck();
 		if (check)
 		{
-			await Navigation.PushAsync(new UploadBillede2(photo));
+			await Navigation.PushAsync(new UploadBillede2(photo, userId));
 		}
 	}
 
@@ -38,7 +40,7 @@ public partial class UploadBillede1 : ContentPage
         bool check = photoCheck();
         if (check)
         {
-            await Navigation.PushAsync(new UploadBillede2(photo));
+            await Navigation.PushAsync(new UploadBillede2(photo, userId));
         }
     }
 }

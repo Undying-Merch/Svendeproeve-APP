@@ -45,7 +45,9 @@ public partial class Login : ContentPage
 					brugerEntry.Text = ""; passEntry.Text = "";
 				}
 
-                Navigation.PushAsync(new MainMenu());
+				int userId = conn.getUserId(brugerEntry.Text);
+
+                Navigation.PushAsync(new MainMenu(userId));
 			}
 			else
 			{

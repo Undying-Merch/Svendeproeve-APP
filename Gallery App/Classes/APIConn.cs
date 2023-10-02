@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Gallery_App.Classes
@@ -44,6 +45,22 @@ namespace Gallery_App.Classes
             return response.Result.IsSuccessStatusCode;
         }
 
+        public int getUserId(string userName)
+        {
+            string json = client.GetStringAsync(url + "BrugerListe/").Result;
+            string[] bList = jsonSplit(json);
+            for (int i = 0; i < bList.Length; i++)
+            {
+                Bruger bruger = System.Text.Json.JsonSerializer.Deserialize<Bruger>(bList[i]);
+                if (bruger.brugernavn == userName)
+                {
+                    return bruger.id;
+                }
+            }
+            return 0;
+
+        }
+
         public List<Kategori> getCategories()
         {
             List<Kategori> categories = new List<Kategori>();
@@ -70,6 +87,36 @@ namespace Gallery_App.Classes
                 splittedString[i] = splittedString[i] + "}";
             }
             return splittedString;
+        }
+
+        public int uploadGeoLocation(Geo_Location geoLocation)
+        {
+            var sJson = new StringContent(System.Text.Json.JsonSerializer.Serialize(geoLocation), Encoding.UTF8, "application/json");
+            var response = client.PostAsync(url + "GeoCreate/", sJson);
+            int returnId = int.Parse(response.Result.Content.ReadAsStringAsync().Result);
+            return returnId;
+        }
+
+        public bool uploadBillede(Billede billede)
+        {
+            
+            using (var multupartFomrContent = new MultipartFormDataContent())
+            {
+                multupartFomrContent.Add(new StringContent(billede.titel), name: "titel");
+                multupartFomrContent.Add(new StringContent(billede.beskrivelse), name: "beskrivelse");
+                multupartFomrContent.Add(new StringContent(billede.geo_id.ToString()), name: "geo_id");
+                multupartFomrContent.Add(new StringContent(billede.kategori_id.ToString()), name: "kategori_id");
+                multupartFomrContent.Add(new StringContent(billede.upload_id.ToString()), name: "upload_id ");
+
+                var fileStreamContent = new StreamContent(File.OpenRead(billede.billedet.FullPath));
+                fileStreamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg");
+                multupartFomrContent.Add(fileStreamContent, name: "billedet", fileName: $"{billede.titel}.jpeg");
+
+                var response = client.PostAsync(url + "BillederCreate/", multupartFomrContent);
+                string test = response.Result.Content.ReadAsStringAsync().Result;
+                return response.Result.IsSuccessStatusCode;
+
+            }
         }
 
     }

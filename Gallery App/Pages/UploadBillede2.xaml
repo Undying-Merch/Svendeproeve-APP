@@ -6,20 +6,41 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="300"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="150"/>
             <RowDefinition Height="150"/>
             
         </Grid.RowDefinitions>
+        
 
         <Image Grid.Row="0"
                x:Name="imageInput"
                Aspect="AspectFit"/>
         <Picker Grid.Row="1"
                 x:Name="categoryPicker"
-                HorizontalOptions="Center"
-                Title="Kategori"/>
+                HorizontalOptions="Center" VerticalOptions="Center"
+                Title="Kategori"
+                SelectedIndexChanged="onCategoryChanged"/>
+        <Entry Grid.Row="2"
+               x:Name="categoryTitle"
+               HorizontalOptions="Center" VerticalOptions="Center"
+               Placeholder="Titel:"
+               />
+        <Editor Grid.Row="3"
+               x:Name="categoryDescription"
+               HorizontalTextAlignment="Center"
+                Placeholder="Beskrivelse:" PlaceholderColor="Black"
+               />
+        <Button Grid.Row="4"
+                x:Name="uploadBTN"
+                HorizontalOptions="End" VerticalOptions="Center"
+                Text="Upload"
+                BackgroundColor="ForestGreen"
+                Clicked="uploadBillede"
+                IsEnabled="False"
+                />
+
 
     </Grid>
 </ContentPage>
