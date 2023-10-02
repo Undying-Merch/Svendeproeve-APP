@@ -33,8 +33,8 @@ public partial class UploadBillede2 : ContentPage
 	public async void uploadBillede(object sender, EventArgs e)
 	{
 		await GetCurrentLocation();
-        decimal lattitude = (decimal)1.111111;
-        decimal longitude = (decimal)2.222222;
+        decimal lattitude = (decimal)location.Latitude;
+        decimal longitude = (decimal)location.Longitude;
 		Geo_Location geoLocation = new Geo_Location(Math.Round(lattitude, 6), Math.Round(longitude,6));
 		int geoId = conn.uploadGeoLocation(geoLocation);
 		int regelId = 0;
