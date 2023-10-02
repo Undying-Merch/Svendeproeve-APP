@@ -23,6 +23,7 @@
         <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
             Text="Upload Lokalt Billede"
             HorizontalOptions="Center"
-            VerticalOptions="Center"/>
+            VerticalOptions="Center"
+            Clicked="uploadPicked"/>
     </Grid>
 </ContentPage>

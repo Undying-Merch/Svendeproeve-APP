@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Maui.Graphics;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +23,7 @@ namespace Gallery_App.Classes
 
         public bool passwordCheck(Bruger bruger)
         {
-            var sJson = new StringContent(JsonSerializer.Serialize(bruger), Encoding.UTF8, "application/json");
+            var sJson = new StringContent(System.Text.Json.JsonSerializer.Serialize(bruger), Encoding.UTF8, "application/json");
             var response = client.PostAsync(url + "PC/", sJson);
             bool boolResp = Boolean.Parse(response.Result.Content.ReadAsStringAsync().Result);
             return boolResp;
@@ -29,7 +31,7 @@ namespace Gallery_App.Classes
 
         public bool exsistingUser(Bruger bruger)
         {
-            var sJson = new StringContent(JsonSerializer.Serialize(bruger), Encoding.UTF8, "application/json");
+            var sJson = new StringContent(System.Text.Json.JsonSerializer.Serialize(bruger), Encoding.UTF8, "application/json");
             var response = client.PostAsync(url + "BC/", sJson);
             bool boolResp = Boolean.Parse(response.Result.Content.ReadAsStringAsync().Result);
             return boolResp;
@@ -37,9 +39,37 @@ namespace Gallery_App.Classes
 
         public bool createUser(Bruger bruger)
         {
-            var sJson = new StringContent(JsonSerializer.Serialize(bruger), Encoding.UTF8, "application/json");
+            var sJson = new StringContent(System.Text.Json.JsonSerializer.Serialize(bruger), Encoding.UTF8, "application/json");
             var response = client.PostAsync(url + "BrugerCreate/", sJson);
             return response.Result.IsSuccessStatusCode;
+        }
+
+        public List<Kategori> getCategories()
+        {
+            List<Kategori> categories = new List<Kategori>();
+            string json = client.GetStringAsync(url + "KategoriListe/").Result;
+            string[] categoryStrings = jsonSplit(json);
+            for (int i = 0; i < categoryStrings.Length; i++)
+            {
+                Kategori kategori = JsonConvert.DeserializeObject<Kategori>(categoryStrings[i]);
+                categories.Add(kategori);
+            }
+            return categories;
+
+        }
+
+        private String[] jsonSplit(string json)
+        {
+            char split = '}';
+            String[] splittedString = json.Split(split);
+            splittedString = splittedString.SkipLast(1).ToArray();
+            for (int i = 0; i < splittedString.Length; i++)
+            {
+                splittedString[i] = splittedString[i].TrimStart(',', '[');
+                splittedString[i] = splittedString[i].TrimEnd(']');
+                splittedString[i] = splittedString[i] + "}";
+            }
+            return splittedString;
         }
 
     }

@@ -14,6 +14,12 @@ public partial class Login : ContentPage
         if (Preferences.Default.ContainsKey("user") == true) { loginRemember.IsChecked = true; brugerEntry.Text = Preferences.Default.Get("user", ""); passEntry.Text = Preferences.Default.Get("pass", ""); }
 
     }
+	public Login(string username, string password)
+	{
+		InitializeComponent();
+		brugerEntry.Text = username;
+		passEntry.Text = password;
+	}
 
     public void gotoMain(object sender, EventArgs e)
 	{

@@ -43,6 +43,8 @@ public partial class OpretBruger : ContentPage
             if (isSucces)
             {
 				await DisplayAlert("Succes", "Din bruger er oprettet, fortsætter til Login", "OK");
+				await Navigation.PushAsync(new Login(bruger.brugernavn, bruger.password));
+				await Navigation.PopAsync();
             }
 			else
 			{
