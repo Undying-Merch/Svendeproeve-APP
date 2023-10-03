@@ -25,13 +25,14 @@
                 Title="Vælg Kategori"
                 SelectedIndexChanged="onCategoryChanged"/>
 
-        <Image Grid.Row="1" Grid.Column="0"
-               x:Name="galleryImage0"/>
-        <Image Grid.Row="1" Grid.Column="2"
+        <ImageButton Grid.Row="1" Grid.Column="0"
+               x:Name="galleryImage0"
+               Clicked="clickImage1"/>
+        <ImageButton Grid.Row="1" Grid.Column="2"
                x:Name="galleryImage1"/>
-        <Image Grid.Row="3" Grid.Column="0"
+        <ImageButton Grid.Row="3" Grid.Column="0"
                x:Name="galleryImage2"/>
-        <Image Grid.Row="3" Grid.Column="2"
+        <ImageButton Grid.Row="3" Grid.Column="2"
                x:Name="galleryImage3"/>
 
         <Button Grid.Row="4" Grid.Column="0"

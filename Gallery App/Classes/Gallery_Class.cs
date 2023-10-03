@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gallery_App.Classes
 {
-    internal class Gallery_Class
+    public class Gallery_Class
     {
         public int id { get; set; }
         public string titel { get; set; }
