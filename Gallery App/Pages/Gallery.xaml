@@ -7,22 +7,43 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Picker Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+        <Picker Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
                 x:Name="categoryPicker"
                 HorizontalOptions="Center" VerticalOptions="Center"
                 Title="Vælg Kategori"/>
-        
-        
+
+        <Image Grid.Row="1" Grid.Column="0"
+               x:Name="galleryImage0"/>
+        <Image Grid.Row="1" Grid.Column="2"
+               x:Name="galleryImage1"/>
+        <Image Grid.Row="3" Grid.Column="0"
+               x:Name="galleryImage2"/>
+        <Image Grid.Row="3" Grid.Column="2"
+               x:Name="galleryImage3"/>
+
+        <Button Grid.Row="4" Grid.Column="0"
+                Text="Forrige"
+                x:Name="previousBTN"
+                IsEnabled="False"
+                VerticalOptions="Center" HorizontalOptions="Start"
+                BackgroundColor="ForestGreen"/>
+        <Button Grid.Row="4" Grid.Column="2"
+                Text="Næste"
+                x:Name="nextBTN"
+                VerticalOptions="Center" HorizontalOptions="End"
+                BackgroundColor="ForestGreen"/>
 
     </Grid>
     
