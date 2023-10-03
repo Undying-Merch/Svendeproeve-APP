@@ -29,11 +29,14 @@
                x:Name="galleryImage0"
                Clicked="clickImage1"/>
         <ImageButton Grid.Row="1" Grid.Column="2"
-               x:Name="galleryImage1"/>
+               x:Name="galleryImage1"
+               Clicked="clickImage2"/>
         <ImageButton Grid.Row="3" Grid.Column="0"
-               x:Name="galleryImage2"/>
+               x:Name="galleryImage2"
+               Clicked="clickImage3"/>
         <ImageButton Grid.Row="3" Grid.Column="2"
-               x:Name="galleryImage3"/>
+               x:Name="galleryImage3"
+               Clicked="clickImage4"/>
 
         <Button Grid.Row="4" Grid.Column="0"
                 Text="Forrige"

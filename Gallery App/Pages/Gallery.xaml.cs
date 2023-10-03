@@ -124,25 +124,25 @@ public partial class Gallery : ContentPage
             {
                 imageSource = null;
             }
-            if (i == 0 + pageCounter)
+            if (i == 0 + pageCounter && imageSource != null)
             {
                 galleryImage0.Source = imageSource;
                 galleryImage0.IsEnabled = true;
                 pic1Id = bListe[i].id;
             }
-            else if (i == 1 + pageCounter)
+            else if (i == 1 + pageCounter && imageSource != null)
             {
                 galleryImage1.Source = imageSource;
                 galleryImage1.IsEnabled = true;
                 pic2Id = bListe[i].id;
             }
-            else if (i == 2 + pageCounter)
+            else if (i == 2 + pageCounter && imageSource != null)
             {
                 galleryImage2.Source = imageSource;
                 galleryImage2.IsEnabled = true;
                 pic3Id = bListe[i].id;
             }
-            else if (i == 3 + pageCounter)
+            else if (i == 3 + pageCounter && imageSource != null)
             {
                 galleryImage3.Source = imageSource;
                 galleryImage3.IsEnabled = true;
@@ -165,7 +165,46 @@ public partial class Gallery : ContentPage
         await Navigation.PushAsync(new Gallery_Picture(picture));
     }
 
-    
+    public async void clickImage2(object sender, EventArgs e)
+    {
+        Gallery_Class picture = new Gallery_Class();
+        for (int i = 0; i < bListe.Count; i++)
+        {
+            if (bListe[i].id == pic2Id)
+            {
+                picture = bListe[i];
+            }
+        }
+        await Navigation.PushAsync(new Gallery_Picture(picture));
+    }
+
+    public async void clickImage3(object sender, EventArgs e)
+    {
+        Gallery_Class picture = new Gallery_Class();
+        for (int i = 0; i < bListe.Count; i++)
+        {
+            if (bListe[i].id == pic3Id)
+            {
+                picture = bListe[i];
+            }
+        }
+        await Navigation.PushAsync(new Gallery_Picture(picture));
+    }
+
+    public async void clickImage4(object sender, EventArgs e)
+    {
+        Gallery_Class picture = new Gallery_Class();
+        for (int i = 0; i < bListe.Count; i++)
+        {
+            if (bListe[i].id == pic4Id)
+            {
+                picture = bListe[i];
+            }
+        }
+        await Navigation.PushAsync(new Gallery_Picture(picture));
+    }
+
+
 
 
 

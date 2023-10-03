@@ -5,12 +5,26 @@
              Title="Gallery_Picture">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.05*"/>
-            <RowDefinition Height="0.75"/>
+            <RowDefinition Height="0.03*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.02*"/>
             <RowDefinition Height="0.15*"/>
             <RowDefinition Height="0.05*"/>
         </Grid.RowDefinitions>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="2"
+               x:Name="pictureTitle"
+               FontSize="Medium"
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Image Grid.Row="1" Grid.ColumnSpan="2"
+               x:Name="pictureImage"/>
+        <Label Grid.Row="3" Grid.ColumnSpan="2"
+               x:Name="pictureDescription"
+               HorizontalTextAlignment="Center"/>
         
     </Grid>
 </ContentPage>
