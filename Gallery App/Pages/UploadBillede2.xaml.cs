@@ -52,8 +52,8 @@ public partial class UploadBillede2 : ContentPage
 		if (uploadResult)
 		{
 			await DisplayAlert("Succes", "Dit billede er nu uploadet, returner til Main Siden", "OK");
-			Navigation.PopAsync();
-			Navigation.PopAsync();
+			await Navigation.PopAsync();
+			await Navigation.PopAsync();
 		
 		}
 		else

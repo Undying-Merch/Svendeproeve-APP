@@ -22,7 +22,8 @@
         <Button Grid.Column="1" Grid.Row="0"
                 Text="Gennemse Galleri"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"/>
+                VerticalOptions="Center"
+                Clicked="gotoGallery"/>
 
         <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                 Text="Tilmeld dig 'Dagens Billede'!"

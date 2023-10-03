@@ -14,4 +14,9 @@ public partial class MainMenu : ContentPage
 	{
 		Navigation.PushAsync(new UploadBillede1(userId));
 	}
+
+	public void gotoGallery(object sender, EventArgs e)
+	{
+		Navigation.PushAsync(new Gallery());
+	}
 }

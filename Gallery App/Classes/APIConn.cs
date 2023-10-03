@@ -22,6 +22,21 @@ namespace Gallery_App.Classes
             client.DefaultRequestHeaders.Add("Authorization", $"Token {token}");
         }
 
+        private String[] jsonSplit(string json)
+        {
+            char split = '}';
+            String[] splittedString = json.Split(split);
+            splittedString = splittedString.SkipLast(1).ToArray();
+            for (int i = 0; i < splittedString.Length; i++)
+            {
+                splittedString[i] = splittedString[i].TrimStart(',', '[');
+                splittedString[i] = splittedString[i].TrimEnd(']');
+                splittedString[i] = splittedString[i] + "}";
+            }
+            return splittedString;
+        }
+
+
         public bool passwordCheck(Bruger bruger)
         {
             var sJson = new StringContent(System.Text.Json.JsonSerializer.Serialize(bruger), Encoding.UTF8, "application/json");
@@ -75,19 +90,6 @@ namespace Gallery_App.Classes
 
         }
 
-        private String[] jsonSplit(string json)
-        {
-            char split = '}';
-            String[] splittedString = json.Split(split);
-            splittedString = splittedString.SkipLast(1).ToArray();
-            for (int i = 0; i < splittedString.Length; i++)
-            {
-                splittedString[i] = splittedString[i].TrimStart(',', '[');
-                splittedString[i] = splittedString[i].TrimEnd(']');
-                splittedString[i] = splittedString[i] + "}";
-            }
-            return splittedString;
-        }
 
         public int uploadGeoLocation(Geo_Location geoLocation)
         {
@@ -119,5 +121,17 @@ namespace Gallery_App.Classes
             }
         }
 
+        public List<Gallery_Class> getAllBilleder()
+        {
+            string json = client.GetStringAsync(url + "BillederListe/").Result;
+            string[] bList = jsonSplit(json);
+            List<Gallery_Class> billeder = new List<Gallery_Class>();
+            for (int i = 0; i < bList.Length; i++)
+            {
+                Gallery_Class billede = System.Text.Json.JsonSerializer.Deserialize<Gallery_Class>(bList[i]);
+                billeder.Add(billede);
+            }
+            return billeder;
+        }
     }
 }
