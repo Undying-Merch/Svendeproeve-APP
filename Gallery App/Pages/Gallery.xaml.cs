@@ -14,6 +14,27 @@ public partial class Gallery : ContentPage
     int pageCounter = 0;
     private string url = "http://10.130.54.78:8000";
 
+    public void onCategoryChanged(object sender, EventArgs e)
+    {
+        string categoryString = categoryPicker.SelectedItem.ToString();
+
+        if (categoryString == "Alle")
+        {
+            catId = -1;
+        }
+        else
+        {
+            for (int i = 0;i < categories.Count;i++)
+            {
+                if (categoryString == categories[i].navn)
+                {
+                    catId = categories[i].Id;
+                }
+            }
+        }
+        setImageList();
+    }
+
     public void setImageList()
     {
         bListe.Clear();
@@ -45,10 +66,14 @@ public partial class Gallery : ContentPage
         galleryImage3.Source = null;
         for (int i = 0 + pageCounter; i < 4 + pageCounter; i++)
         {
-            var imageSource = ImageSource.FromUri(new Uri(url + bListe[i].billedet));
-            if (i > bListe.Count)
+            var imageSource = ImageSource.FromUri(new Uri(url));
+            if (i < bListe.Count)
             {
-                break;
+                imageSource = ImageSource.FromUri(new Uri(url + bListe[i].billedet));
+            }
+            else
+            {
+                imageSource = null;
             }
             if (i == 0 + pageCounter)
             {
