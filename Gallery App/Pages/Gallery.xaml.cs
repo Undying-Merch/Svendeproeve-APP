@@ -14,6 +14,54 @@ public partial class Gallery : ContentPage
     int pageCounter = 0;
     private string url = "http://10.130.54.78:8000";
 
+    public Gallery()
+    {
+        InitializeComponent();
+        billeder = conn.getAllBilleder();
+        categories = conn.getCategories();
+        categoryNames.Add("Alle");
+        for (int i = 0; i < categories.Count; i++)
+        {
+            categoryNames.Add(categories[i].navn);
+        }
+        categoryPicker.ItemsSource = categoryNames;
+        setImageList();
+        setImage();
+    }
+
+    public void backAndForthBTN()
+    {
+        if (pageCounter == 0)
+        {
+            previousBTN.IsEnabled = false;
+        }
+        else
+        {
+            previousBTN.IsEnabled = true;
+        }
+        if (bListe.Count - 4 <= pageCounter)
+        {
+            nextBTN.IsEnabled = false;
+        }
+        else
+        {
+            nextBTN.IsEnabled = true;
+        }
+    }
+
+    public void prevoiusSlideBTN(object sender, EventArgs e)
+    {
+        pageCounter -= 4;
+        backAndForthBTN();
+        setImage();
+    }
+    public void nextSlideBTN(object sender, EventArgs e)
+    {
+        pageCounter += 4;
+        backAndForthBTN();
+        setImage();
+    }
+
     public void onCategoryChanged(object sender, EventArgs e)
     {
         string categoryString = categoryPicker.SelectedItem.ToString();
@@ -56,6 +104,8 @@ public partial class Gallery : ContentPage
             }
         }
         setImage();
+        pageCounter = 0;
+        backAndForthBTN();
     }
 
     public void setImage()
@@ -95,20 +145,7 @@ public partial class Gallery : ContentPage
 
     }
 
-    public Gallery()
-	{
-		InitializeComponent();
-        billeder = conn.getAllBilleder();
-        categories = conn.getCategories();
-        categoryNames.Add("Alle");
-        for (int i = 0; i < categories.Count; i++)
-        {
-            categoryNames.Add(categories[i].navn);
-        }
-        categoryPicker.ItemsSource = categoryNames;
-        setImageList();
-        setImage();
-    }
+    
 
 
 

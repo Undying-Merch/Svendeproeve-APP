@@ -39,12 +39,14 @@
                 x:Name="previousBTN"
                 IsEnabled="False"
                 VerticalOptions="Center" HorizontalOptions="Start"
-                BackgroundColor="ForestGreen"/>
+                BackgroundColor="ForestGreen"
+                Clicked="prevoiusSlideBTN"/>
         <Button Grid.Row="4" Grid.Column="2"
                 Text="Næste"
                 x:Name="nextBTN"
                 VerticalOptions="Center" HorizontalOptions="End"
-                BackgroundColor="ForestGreen"/>
+                BackgroundColor="ForestGreen"
+                Clicked="nextSlideBTN"/>
 
     </Grid>
     
