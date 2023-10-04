@@ -148,5 +148,21 @@ namespace Gallery_App.Classes
             var response = client.PostAsync(url + "SubscribedCreate/", sJson);
             return response.Result.IsSuccessStatusCode;
         }
+
+        public List<Subscribe_Class> getSubscribedItems(int id)
+        {
+            string json = client.GetStringAsync(url + "SubscribedListe/").Result;
+            string[] subList = jsonSplit(json);
+            List<Subscribe_Class> subs = new List<Subscribe_Class>();
+            for (int i = 0; i < subList.Length; i++)
+            {
+                Subscribe_Class sub = System.Text.Json.JsonSerializer.Deserialize<Subscribe_Class>(subList[i]);
+                if (sub.bruger_id == id)
+                {
+                    subs.Add(sub);
+                }
+            }
+            return subs;
+        }
     }
 }
