@@ -19,4 +19,9 @@ public partial class MainMenu : ContentPage
 	{
 		Navigation.PushAsync(new Gallery());
 	}
+
+	public void gotoSubscribe (object sender, EventArgs e)
+	{
+		Navigation.PushAsync(new Subscribe(userId));
+	}
 }

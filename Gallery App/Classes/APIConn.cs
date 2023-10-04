@@ -141,5 +141,12 @@ namespace Gallery_App.Classes
             Geo_Location location = System.Text.Json.JsonSerializer.Deserialize<Geo_Location>(oneList[0]);
             return location;
         }
+
+        public bool subscribeTo(Subscribe_Class subscribe_class)
+        {
+            var sJson = new StringContent(System.Text.Json.JsonSerializer.Serialize(subscribe_class), Encoding.UTF8, "application/json");
+            var response = client.PostAsync(url + "SubscribedCreate/", sJson);
+            return response.Result.IsSuccessStatusCode;
+        }
     }
 }
