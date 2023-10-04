@@ -164,5 +164,10 @@ namespace Gallery_App.Classes
             }
             return subs;
         }
+
+        public void unsubscribeItem (int id)
+        {
+            string json = client.GetStringAsync($"{url}SubscribedDelete/{id}/").Result;
+        }
     }
 }

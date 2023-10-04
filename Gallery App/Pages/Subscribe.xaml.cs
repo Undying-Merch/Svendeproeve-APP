@@ -1,4 +1,5 @@
 using Gallery_App.Classes;
+using Microsoft.Maui.Layouts;
 
 namespace Gallery_App.Pages;
 
@@ -36,15 +37,11 @@ public partial class Subscribe : ContentPage
         {
             exampleLabel.IsVisible = true;
         }
-        if (subscribeBTN.IsEnabled == false)
-        {
-            subscribeBTN.IsEnabled = true;
-        }
 
         exampleImage1.Source = null; exampleImage2.Source = null;
         var imageSource = ImageSource.FromUri(new Uri(url));
-        catString = catPicker.SelectedItem.ToString();
 
+        catString = catPicker.SelectedItem.ToString();
         for (int i = 0; i < categories.Count; i++)
         {
             if (catString == categories[i].navn)
@@ -52,6 +49,26 @@ public partial class Subscribe : ContentPage
                 catId = categories[i].Id;
             }
         }
+
+        bool allreadySubbed = false;
+        for (int i = 0;i < subbedItems.Count; i++)
+        {
+            if (subbedItems[i].kategori_id == catId)
+            {
+                allreadySubbed = true;
+            }
+        }
+        if (allreadySubbed)
+        {
+            afmeldBTN.IsEnabled = true;
+            subscribeBTN.IsEnabled = false;
+        }
+        else
+        {
+            afmeldBTN.IsEnabled= false;
+            subscribeBTN.IsEnabled = true;
+        }
+
         int images = 0;
         int counter = 0;
         while (images != 2)
@@ -86,20 +103,9 @@ public partial class Subscribe : ContentPage
     {
         bool goOn = await DisplayAlert("Subscribe", $"Subscribe til {catString}?", "Ja", "Nej");
         bool result = false;
-        bool alreadySubbed = false;
 
-        for (int i = 0; i < subbedItems.Count; i++)
-        {
-            if (subbedItems[i].kategori_id == catId)
-            {
-                alreadySubbed = true;
-            }
-        }
-        if (alreadySubbed)
-        {
-            await DisplayAlert("Allerede Subbed", $"Du er alllerede subbed til {catString}", "OK");
-        }
-        if (goOn && !alreadySubbed)
+        
+        if (goOn)
         {
             Subscribe_Class sub = new Subscribe_Class(userId, catId);
             result = conn.subscribeTo(sub);
@@ -110,9 +116,29 @@ public partial class Subscribe : ContentPage
             await DisplayAlert("Succes", $"Du er nu subscribed til {catString}, går tilbage til Main", "OK");
             await Navigation.PopAsync();
         }
-        else if (!result && !alreadySubbed)
+        else if (!result)
         {
             await DisplayAlert("Fejl", "Der skete en fejl, kontakt venligst vores udvikler hold.", "OK");
+        }
+    }
+
+    public async void unsubscribeFunction(object sender, EventArgs e)
+    {
+        bool goOn = await DisplayAlert("Afmeld", $"Sikker på du vil afmelde {catString}?", "Ja", "Nej");
+
+        if (goOn)
+        {
+            int itemId = 0;
+            for (int i = 0; i < subbedItems.Count; i++)
+            {
+                if (catId == subbedItems[i].kategori_id)
+                {
+                    itemId = subbedItems[i].id;
+                }
+            }
+            conn.unsubscribeItem(itemId);
+            await DisplayAlert("Afmeldt", $"Du har nu afmeldt {catString}", "OK");
+            await Navigation.PopAsync();
         }
     }
 

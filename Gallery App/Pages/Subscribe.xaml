@@ -31,12 +31,20 @@
         <Image Grid.Row="2" Grid.Column="1"
                x:Name="exampleImage2"/>
 
-        <Button Grid.Row="3" Grid.ColumnSpan="2"
+        <Button Grid.Row="3" Grid.Column="0"
+                Text="Afmeld"
+                HorizontalOptions="Center" VerticalOptions="Center"
+                x:Name="afmeldBTN"
+                IsEnabled="false"
+                Clicked="unsubscribeFunction"
+                BackgroundColor="ForestGreen"/>
+        <Button Grid.Row="3" Grid.Column="1"
                 Text="Subscribe"
                 HorizontalOptions="Center" VerticalOptions="Center"
                 x:Name="subscribeBTN"
                 IsEnabled="false"
-                Clicked="subscribeFunction"/>
+                Clicked="subscribeFunction"
+                BackgroundColor="ForestGreen"/>
 
     </Grid>
 </ContentPage>
