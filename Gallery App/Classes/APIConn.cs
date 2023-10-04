@@ -134,5 +134,12 @@ namespace Gallery_App.Classes
             return billeder;
         }
 
+        public Geo_Location getLocation(int id)
+        {
+            string json = client.GetStringAsync($"{url}Geo/{id}/").Result;
+            string[] oneList = jsonSplit(json);
+            Geo_Location location = System.Text.Json.JsonSerializer.Deserialize<Geo_Location>(oneList[0]);
+            return location;
+        }
     }
 }

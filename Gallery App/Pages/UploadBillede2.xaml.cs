@@ -35,7 +35,7 @@ public partial class UploadBillede2 : ContentPage
 		await GetCurrentLocation();
         decimal lattitude = (decimal)location.Latitude;
         decimal longitude = (decimal)location.Longitude;
-		Geo_Location geoLocation = new Geo_Location(Math.Round(lattitude, 6), Math.Round(longitude,6));
+		Geo_Location geoLocation = new Geo_Location(Math.Round(lattitude, 6).ToString(), Math.Round(longitude, 6).ToString());
 		int geoId = conn.uploadGeoLocation(geoLocation);
 		int regelId = 0;
 		for (int i = 0;i < categories.Count;i++)

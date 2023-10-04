@@ -25,6 +25,12 @@
         <Label Grid.Row="3" Grid.ColumnSpan="2"
                x:Name="pictureDescription"
                HorizontalTextAlignment="Center"/>
-        
+
+        <Button Grid.Row="4"
+                HorizontalOptions="Start" VerticalOptions="Center"
+                Text="Se Billedet Lokation"
+                BackgroundColor="CadetBlue"
+                Clicked="gotoMaps"/>
+
     </Grid>
 </ContentPage>
